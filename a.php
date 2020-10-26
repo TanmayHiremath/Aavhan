@@ -56,10 +56,15 @@
                 
             </div>"; ?>
         </div>
-
-
-
-        <div class="carousel sm-screen" data-flickity='{ "autoPlay": 1500,"wrapAround": true }'>
+    
+        <div class="sm-screen">
+            <div class="container-fluid mb-2" style="position:relative;">
+            <?php echo "
+           <a href='blog.php?id=".$data[$headlines[0]][0]."'><img style='max-width: 100%;filter: grayscale(5%);filter: brightness(70%);' src=".$data[$headlines[0]][1]." alt='Couldn\'t load'>
+                <div class='image-heading-lg' style='left: 10%;right: 10%;font-size: 1.5rem;'>".$data[$headlines[0]][2]."</div>
+                <div class='image-author-lg' style='left: 10%;'>".$data[$headlines[0]][3]."</div></a>";?>
+            </div>
+        <div class="carousel" data-flickity='{ "autoPlay": 1500,"wrapAround": true }'>
         <div class="carousel-cell">
         <? echo "<a href='blog.php?id=".$data[$headlines[1]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldn't load'>
                     <div class='image-heading-sm'>".$data[$headlines[1]][2]."</div></a>"?>
@@ -76,7 +81,7 @@
         <? echo "<a href='blog.php?id=".$data[$headlines[4]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldn't load'>
                     <div class='image-heading-sm'>".$data[$headlines[4]][2]."</div></a>"?>
         </div>
-        </div>
+        </div></div>
 
 
 
