@@ -14,23 +14,43 @@
 <body>
     <?php include_once('connection.php');?>     
     <div class="container mt-5">
-        <div class="grid-container text-center">
+        <div class="headlines row no-gutters">
         <?php 
         $query = "SELECT * FROM blog";
         $result = mysqli_query($connection, $query);
         $data = mysqli_fetch_all($result);
         $row_count = mysqli_num_rows($result);
         $headlines = array(0,1,2,3,4);
-           echo "<div class='item1 grid-item'>
-           <a href='blog.php?id=".$data[$headlines[0]][0]."'><img style='position:relative;width:30vw;height:20.25vw;' src=".$data[$headlines[0]][1]." alt='Couldn\'t load'>
+           echo "<div class='col-sm-6'>
+           <a href='blog.php?id=".$data[$headlines[0]][0]."'><img class='img-lg' style='max-width: 100%;' src=".$data[$headlines[0]][1]." alt='Couldn\'t load'>
                 <div class='image-heading-lg'>".$data[$headlines[0]][2]."</div>
                 <div class='image-author-lg'>".$data[$headlines[0]][3]."</div></a>
             </div>";
 
-            for ($i=1; $i<5;$i++)
-            echo "<div class='grid-item'>
-            <a href='blog.php?id=".$data[$headlines[$i]][0]."'><img style='width: 15vw;height:10vw;' src=".$data[$headlines[$i]][1]." alt='Couldn't load'>
-                <div class='image-heading-sm'>".$data[$headlines[$i]][2]."</div></a>               
+            
+            echo "<div class='col-sm-6'>
+            <div class='row no-gutters'>
+                <div class='col-sm-6'>
+                    <a href='blog.php?id=".$data[$headlines[1]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[1]][2]."</div></a>
+                 </div>
+                <div class='col-sm-6'>
+                    <a href='blog.php?id=".$data[$headlines[2]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[2]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[2]][2]."</div></a>  
+                </div>  
+            </div>  
+            <div class='row no-gutters'>
+                <div class='col-sm-6'>
+                    <a href='blog.php?id=".$data[$headlines[3]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[3]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[3]][2]."</div></a>
+                </div>
+                <div class='col-sm-6'>
+                    <a href='blog.php?id=".$data[$headlines[4]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[4]][2]."</div></a>  
+                </div>  
+            </div>    
+                
+                
             </div>"; ?>
         </div>
         <br><br>
@@ -46,6 +66,7 @@
             </li>
         </ul>
     </div>
+    <br><br>
     <div class='container'>        
     <?php
     if (mysqli_num_rows($result) != 0) {
@@ -55,7 +76,7 @@
             
             if($count%2 == 0){echo "<div class='row'>";}
             if($count%2 == 1) {echo "<div class='col-md-2'></div>";}
-            echo "<div class='col-md-5'><a href='blog.php?id=".$data[$i][0]."'><img class='img-lg' src=".$data[$i][1]." alt='Couldn't load' loading='lazy'>
+            echo "<div class='col-md-5'><a href='blog.php?id=".$data[$i][0]."'><img class='thumbnail' src=".$data[$i][1]." alt='Couldnt load' loading='lazy'>
             <div class='title'>".$data[$i][2]."</div>
             <div class='author float-left mr-2'>".$data[$i][3]."</div><div class='date float-left'>- ".$data[$i][5]."</div>
             <div class='clearfix'></div>
@@ -69,7 +90,7 @@
     else {
         echo "<div class='error'>No records found</div>";
     }
-    ?></div>
+    ?></div><br><br>
         <?php //echo '<pre>'; print_r($data); echo '</pre>';?>
 
         <script>
