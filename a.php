@@ -4,17 +4,20 @@
     <title>Website</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
 </head>
 
 <body>
     <?php include_once('connection.php');?>     
     <div class="container mt-5">
-        <div class="headlines row no-gutters">
+        <div class="headlines lg-screen row no-gutters">
         <?php 
         $query = "SELECT * FROM blog";
         $result = mysqli_query($connection, $query);
@@ -53,6 +56,42 @@
                 
             </div>"; ?>
         </div>
+
+
+
+        <div class="carousel sm-screen" data-flickity='{ "autoPlay": 1500,"wrapAround": true }'>
+        <div class="carousel-cell">
+        <? echo "<a href='blog.php?id=".$data[$headlines[1]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[1]][2]."</div></a>"?>
+        </div>
+        <div class="carousel-cell">
+        <? echo "<a href='blog.php?id=".$data[$headlines[2]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[2]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[2]][2]."</div></a>"?>
+        </div>
+        <div class="carousel-cell">
+        <? echo "<a href='blog.php?id=".$data[$headlines[3]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[3]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[3]][2]."</div></a>"?>
+        </div>
+        <div class="carousel-cell">
+        <? echo "<a href='blog.php?id=".$data[$headlines[4]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldn't load'>
+                    <div class='image-heading-sm'>".$data[$headlines[4]][2]."</div></a>"?>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <br><br>
         <ul class="nav nav-tabs">
             <li class="nav-item">
