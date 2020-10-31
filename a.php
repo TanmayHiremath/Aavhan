@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <?php include_once('connection.php');?> 
     <title>Website</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-    <?php include_once('connection.php');?>     
+        
     <div class="container mt-5">
         <div class="headlines lg-screen row no-gutters">
         <?php 
@@ -25,7 +26,7 @@
         $row_count = mysqli_num_rows($result);
         $headlines = array(0,1,2,3,4);
            echo "<div class='col-sm-6'>
-           <a href='blog.php?id=".$data[$headlines[0]][0]."'><img class='img-lg' style='max-width: 100%;' src=".$data[$headlines[0]][1]." alt='Couldn\'t load'>
+           <a href='blog.php?id=".$data[$headlines[0]][0]."'><img class='img-lg' style='max-width: 100%;' src=".$data[$headlines[0]][1]." alt='Couldnt load'>
                 <div class='image-heading-lg'>".$data[$headlines[0]][2]."</div>
                 <div class='image-author-lg'>".$data[$headlines[0]][3]."</div></a>
             </div>";
@@ -34,21 +35,21 @@
             echo "<div class='col-sm-6'>
             <div class='row no-gutters'>
                 <div class='col-sm-6'>
-                    <a href='blog.php?id=".$data[$headlines[1]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldn't load'>
+                    <a href='blog.php?id=".$data[$headlines[1]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[1]][2]."</div></a>
                  </div>
                 <div class='col-sm-6'>
-                    <a href='blog.php?id=".$data[$headlines[2]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[2]][1]." alt='Couldn't load'>
+                    <a href='blog.php?id=".$data[$headlines[2]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[2]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[2]][2]."</div></a>  
                 </div>  
             </div>  
             <div class='row no-gutters'>
                 <div class='col-sm-6'>
-                    <a href='blog.php?id=".$data[$headlines[3]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[3]][1]." alt='Couldn't load'>
+                    <a href='blog.php?id=".$data[$headlines[3]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[3]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[3]][2]."</div></a>
                 </div>
                 <div class='col-sm-6'>
-                    <a href='blog.php?id=".$data[$headlines[4]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldn't load'>
+                    <a href='blog.php?id=".$data[$headlines[4]][0]."'><img class='img-sm' style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[4]][2]."</div></a>  
                 </div>  
             </div>    
@@ -66,19 +67,19 @@
             </div>
         <div class="carousel" data-flickity='{ "autoPlay": 1500,"wrapAround": true }'>
         <div class="carousel-cell">
-        <? echo "<a href='blog.php?id=".$data[$headlines[1]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldn't load'>
+        <?php echo "<a href='blog.php?id=".$data[$headlines[1]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[1]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[1]][2]."</div></a>"?>
         </div>
         <div class="carousel-cell">
-        <? echo "<a href='blog.php?id=".$data[$headlines[2]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[2]][1]." alt='Couldn't load'>
+        <?php echo "<a href='blog.php?id=".$data[$headlines[2]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[2]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[2]][2]."</div></a>"?>
         </div>
         <div class="carousel-cell">
-        <? echo "<a href='blog.php?id=".$data[$headlines[3]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[3]][1]." alt='Couldn't load'>
+        <?php echo "<a href='blog.php?id=".$data[$headlines[3]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[3]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[3]][2]."</div></a>"?>
         </div>
         <div class="carousel-cell">
-        <? echo "<a href='blog.php?id=".$data[$headlines[4]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldn't load'>
+        <?php echo "<a href='blog.php?id=".$data[$headlines[4]][0]."'><img style='max-width: 100%;' src=".$data[$headlines[4]][1]." alt='Couldnt load'>
                     <div class='image-heading-sm'>".$data[$headlines[4]][2]."</div></a>"?>
         </div>
         </div></div>
