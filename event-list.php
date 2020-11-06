@@ -22,26 +22,29 @@
                         $row_count = mysqli_num_rows($result);
                         echo "
                         <div class='col-sm-8'>
+                        <a href=event-detail.php?id=".$data[0][0].">
                         <div class='img-container'><img class='img-lg' src='" . $data[0][1] . "' alt='couldnt load'>
                         <div style='height:20%!important' class='black-bg'>
                         <div style='font-size:1.75rem' class='caption'>" . $data[0][2] . "</div>
                         <div class='date'>" . $data[0][3] . "</div>
-                        </div></div>
+                        </div></div></a>
                         </div>
                         <div class='col-sm-4'>
                                 <div class='row'>
                                         <div class='col-sm-12'>
+                                                <a href=event-detail.php?id=".$data[1][0].">
                                                 <div class='img-container'>
                                                 <img class='img-sm' src='" . $data[1][1] . "' alt='couldnt load'>
                                                 <div class='black-bg'>
                                                 <div class='caption'>" . $data[1][2] . "</div>
                                                 <div class='date'>" . $data[1][3] . "</div>
-                                                </div></div>
+                                                </div></div></a>
+                                                <a href=event-detail.php?id=".$data[2][0].">
                                                 <div class='img-container'>
                                                 <img class='img-sm' src='" . $data[2][1] . "' alt='couldnt load'>
                                                 <div class='black-bg'>
                                                 <div class='caption'>" . $data[2][2] . "</div>
-                                                <div class='date'>" . $data[2][3] . "</div></div></div>
+                                                <div class='date'>" . $data[2][3] . "</div></div></div></a>
                                         </div>
                                 </div>
                         </div>";
@@ -49,11 +52,12 @@
                                 for ($i = 0; $i < $row_count; $i++) {
                                         echo "
                                         <div class='col-sm-4'>
+                                        <a href=event-detail.php?id=".$data[$i][0].">
                                         <div class='img-container'>
                                         <img class='img-sm' loading='lazy' src='" . $data[$i][1] . "' alt='couldnt load'>
                                         <div class='black-bg'><div class='caption'>" . $data[$i][2] . "</div>
                                         <div class='date'>" . $data[$i][3] . "</div></div>
-                                        </div>
+                                        </div></a>
                                         </div>";
                                 }
                         } ?>
