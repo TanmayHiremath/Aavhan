@@ -38,3 +38,20 @@
 .img-container {
   position: relative;
 }
+
+@media screen and (max-width: 1200px) {
+  .caption
+  {
+    font-size: 1.1rem!important;
+  }
+  .date{
+    font-size: 0.75rem;
+  }
+  .img-sm,.img-lg{
+    width: 100%;
+    height: auto;
+  }
+  .black-bg {
+    height: 20%!important;
+  }
+}

@@ -1,15 +1,15 @@
-.sm-screen{
+.sm-screen {
   display: none;
 }
 
 .img-sm {
-  height:12vw;
+  height: 12vw;
 }
-.img-lg{
+.img-lg {
   width: 100%;
   height: 24vw;
 }
-.headlines img{
+.headlines img {
   padding: 0;
   margin: 0;
   filter: grayscale(5%);
@@ -57,29 +57,29 @@
   filter: grayscale(5%);
   filter: brightness(70%);
 } */
-a{
+a {
   color: black;
 }
 a:hover {
   text-decoration: none;
   opacity: 90%;
-} 
-.title{
+}
+.title {
   font-weight: 300;
-  font-size: 1.5rem!important;
+  font-size: 1.5rem !important;
   text-align: left;
 }
-.author{
+.author {
   font-size: 0.85rem;
   font-weight: 700;
   color: #f9c300;
 }
-.date{
+.date {
   font-size: 0.85rem;
   font-weight: 600;
   color: gray;
 }
-.description{
+.description {
   font-size: 1rem;
   font-weight: 400;
   color: #777;
@@ -98,20 +98,18 @@ a:hover {
   font-size: 2rem;
   text-align: left !important;
   margin-bottom: 15px;
-
 }
 .image-heading-sm {
-      position: absolute;
-      bottom: 5px;
-      left: 5%;
-      right: 5%;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 1.2rem;
-      text-align: left !important;
-      margin-bottom: 0px;
-    
-    }
+  position: absolute;
+  bottom: 5px;
+  left: 5%;
+  right: 5%;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: left !important;
+  margin-bottom: 0px;
+}
 .image-author-lg {
   position: absolute;
   bottom: 5px;
@@ -123,13 +121,13 @@ a:hover {
 }
 
 @media screen and (max-width: 992px) {
-  .lg-screen{
+  .lg-screen {
     display: none;
   }
-  .sm-screen{
+  .sm-screen {
     display: block;
   }
-  .thumbnail{
+  .thumbnail {
     width: 85vw;
     height: 50vw;
   }

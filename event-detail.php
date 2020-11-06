@@ -3,13 +3,13 @@
 <head>
       <?php include_once('connection.php'); ?>
       <?php
-                        $query = "SELECT * FROM events";
-                        $result = mysqli_query($connection, $query);
-                        $data = mysqli_fetch_all($result);
-                        $row_count = mysqli_num_rows($result);
-                        $id=$_GET['id'];
-                        ?>
-      <?php echo "<title>".$data[$id][2]."</title>";?>
+      $query = "SELECT * FROM events";
+      $result = mysqli_query($connection, $query);
+      $data = mysqli_fetch_all($result);
+      $row_count = mysqli_num_rows($result);
+      $id = $_GET['id'];
+      ?>
+      <?php echo "<title>" . $data[$id][2] . "</title>"; ?>
       <meta charset='utf-8'>
       <meta name='viewport' content='width=device-width, initial-scale=1'>
       <link rel='stylesheet' href='https://unpkg.com/flickity@2/dist/flickity.min.css'>
@@ -22,44 +22,86 @@
 </head>
 
 <body>
-<div class="background">
-                  <img src="<?echo $data[$id][1]?>" alt="Couldnt load">
-            </div>
+      <div class="background">
+            <img src="<?php echo $data[$id][1] ?>" alt="Couldnt load">
+      </div>
       <div class="container text-center">
             <div class="row" id='img-text'>
-                  <div class="col-sm-4 p-4" >
-                        <div style='font-weight: 1000;font-size: 3rem;text-shadow: 2px 2px 4px #000000;'>
-                        <?php echo $data[$id][2];?></div>
+                  <div class="col-md-5 p-sm-4">
+                        <div class='title'>
+                              <?php echo $data[$id][2]; ?></div>
 
-                        <div style='font-weight: 900;font-size: 1.75rem;text-shadow: 2px 2px 4px #000000;'>
-                        <?php echo $data[$id][3];?></div>
-                  </div>      
-                  <div class="col-sm-4"></div>
-                  <div class="col-sm-4 mt-5">
-                        <div><a href="#" class="btn-danger p-4">Register Now</a></div>
+                        <div class='date'>
+                              <?php echo $data[$id][3]; ?></div>
+                  </div>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-4 mt-sm-5 mt-3">
+                        <div><a href=<?php echo "event-detail.php?id=" . $id . "&c=registration#collapsibleNavbar" ?> class="btn-danger p-sm-3 p-1">Register Now</a></div>
                   </div>
             </div>
       </div>
       <div></div>
-      <ul class="nav nav-tabs">
-      <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-      </li>
-      </ul>
+      <nav class="navbar navbar-expand-md navbar-dark">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                  <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                  <ul class="navbar-nav">
+                        <li class="nav-item">
+                              <a id="about" class="nav-link active" href=<?php echo "event-detail.php?id=" . $id . "&c=about#collapsibleNavbar" ?>>About</a>
+                        </li>
+                        <li class="nav-item">
+                              <a id="rules" class="nav-link" href=<?php echo "event-detail.php?id=" . $id . "&c=rules#collapsibleNavbar" ?>>Rules</a>
+                        </li>
+                        <li class="nav-item">
+                              <a id="registration" class="nav-link" href=<?php echo "event-detail.php?id=" . $id . "&c=registration#collapsibleNavbar" ?>>Registration</a>
+                        </li>
+                        <li class="nav-item">
+                              <a id="gallery" class="nav-link" href=<?php echo "event-detail.php?id=" . $id . "&c=gallery#collapsibleNavbar" ?>>Gallery</a>
+                        </li>
+                  </ul>
+            </div>
+      </nav>
 
-      <!-- Tab panes -->
-      <div class="tab-content">
-      <div class="tab-pane container active" id="home">...</div>
-      <div class="tab-pane container fade" id="menu1">...</div>
-      <div class="tab-pane container fade" id="menu2">...</div>
-      </div>
-      <br><br>
+      <?php
+      $c = $_GET['c'];
+      if ($c) {
+            if ($c == 'about') {
+                  echo $data[$id][4];
+            } elseif ($c == 'registration') {
+                  echo "<div class='container text-center'>".$data[$id][6]."</div>";
+            } elseif ($c == 'rules') {
+                  echo $data[$id][5];
+            } else if ($c = 'gallery') {
+      ?>
+                  <div class="carousel" data-flickity='{ "autoPlay": 1500,"wrapAround": true,"adaptiveHeight": true }'>
+            <?php
+                  $json = json_decode($data[$id][7], true);
+                  for ($i = 0; $i < count($json['aa']); $i++) {
+                        echo "<div class='carousel-cell'><img src=" . $json['aa'][$i] . " alt='Couldnt load'></div>";
+                  }
+                  echo "</div>";
+            }
+      } else {
+      }
+      // echo '<pre>';
+      // print_r($data);
+      // echo '</pre>'; 
+            ?>
+            <br><br>
+            <script>
+                  function activetab() {
+                        console.log("abcd");
+                        document.getElementById("about").classList.remove("active");
+                        document.getElementById("rules").classList.remove("active");
+                        document.getElementById("registration").classList.remove("active");
+                        document.getElementById("gallery").classList.remove("active");
+                        <?php
+                        echo "document.getElementById('" . $_GET['c'] . "').classList.add('active');"; ?>
+                  }
+                  activetab()
+            </script>
 </body>
 
 </html>
