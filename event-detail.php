@@ -70,7 +70,7 @@
             if ($c == 'about') {
                   echo $data[$id][4];
             } elseif ($c == 'registration') {
-                  echo "<div class='container text-center'>".$data[$id][6]."</div>";
+                  echo "<div class='container text-center'>" . $data[$id][6] . "</div>";
             } elseif ($c == 'rules') {
                   echo $data[$id][5];
             } else if ($c = 'gallery') {
