@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
 
 <head>
@@ -27,17 +28,25 @@
             $payload = $client->verifyIdToken($id_token);
             if ($payload) {
                   $userid = $payload['sub'];
-                  $checkQuery = "SELECT (SELECT userid FROM users WHERE userid = ".$userid.") AS userid;";
+                  $user = array("userid"=>$userid,"name"=>$name,"email"=>$email,"image"=>$image);
+                  $checkQuery = "SELECT (SELECT userid FROM users WHERE userid = " . $userid . ") AS userid;";
                   // $query = "INSERT INTO users VALUES ('$userid','$name','$email','$image');";
                   $result = mysqli_fetch_array(mysqli_query($connection, $checkQuery));
-                  if(is_null($result['userid']))
-                  echo "Account doesn't exist, Sign Up first";
-
-                  header("Location: https://www.google.com");
+                  if (!is_null($result['userid'])) {
+                        $user['clg_name']=$result['clg_name'];
+                        $_SESSION['user']=$user;
+                        $_SESSION["login_time_stamp"] = time();
+                        header("Location:profile.php");
+                        // echo "<script>location.href = 'profile.php';</script>";
+                  } else {
+                        $_SESSION['user']=$user;
+                        header("Location:signup.php");
+                        
+                  }
                   // If request specified a G Suite domain:
                   //$domain = $payload['hd'];
             } else {
-                 echo "<script>alert('Error, try again')</script>";
+                  echo "<script>alert('Error, try again')</script>";
             }
       }
       ?>
@@ -48,11 +57,6 @@
             function onSignIn(googleUser) {
                   var profile = googleUser.getBasicProfile();
                   var id_token = googleUser.getAuthResponse().id_token;
-                  //console.log('IDtoken : ' + id_token);
-                  //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                  // console.log('Name: ' + profile.getName());
-                  // console.log('Image URL: ' + profile.getImageUrl());
-                  // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                   var theForm, in1, in2, in3, in4;
                   theForm = document.createElement('form');
                   theForm.action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>";
